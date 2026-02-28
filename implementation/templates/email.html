@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniHelp – Générateur d'Emails</title>
+  <link rel="stylesheet" href="../static/css/shared.css">
+  <link rel="stylesheet" href="../static/css/email.css">
+</head>
+<body>
+
+  <!-- ── Navbar ──────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="/" class="logo">
+        <div class="logo-icon"></div>
+        UniHelp
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"          class="nav-link">Chat</a></li>
+        <li><a href="/documents" class="nav-link">Documents</a></li>
+        <li><a href="/email"     class="nav-link active">Email</a></li>
+        <li><a href="/docs"      class="nav-link" target="_blank">API</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main class="main-content">
+    <div class="email-wrapper">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <h2> Générateur d'Emails</h2>
+        <p class="subtitle">Créez des emails administratifs professionnels avec l'IA</p>
+      </div>
+
+      <!-- Two-column grid -->
+      <div class="email-grid">
+
+        <!-- ── Left: Form ──────────────────────────────── -->
+        <div class="email-form-panel">
+          <div class="panel-header">
+            <div class="panel-icon blue"></div>
+            <span class="panel-title">Paramètres</span>
+          </div>
+
+          <div class="panel-body">
+            <form id="emailForm" novalidate>
+
+              <!-- Template chips (populated from API) -->
+              <div class="form-group">
+                <label class="form-label">Template</label>
+                <div class="template-chips" id="templateChips">
+                  <!-- Populated by email.js -->
+                  <span style="font-size:0.8rem;color:var(--text-muted)">Chargement…</span>
+                </div>
+                <!-- Hidden select for compatibility with original JS -->
+                <select id="templateSelect" class="form-select" style="margin-top:0.6rem">
+                  <option value="">Aucun template</option>
+                </select>
+              </div>
+
+              <!-- Recipient -->
+              <div class="form-group">
+                <label class="form-label" for="recipient">Destinataire</label>
+                <input
+                  type="email"
+                  id="recipient"
+                  class="form-input"
+                  placeholder="secretariat@iit.tn"
+                  autocomplete="email"
+                >
+              </div>
+
+              <!-- Subject -->
+              <div class="form-group">
+                <label class="form-label" for="subject">Objet <span style="color:var(--accent)">*</span></label>
+                <input
+                  type="text"
+                  id="subject"
+                  class="form-input"
+                  placeholder="Ex : Demande d'attestation d'inscription"
+                  required
+                >
+              </div>
+
+              <!-- Context -->
+              <div class="form-group">
+                <label class="form-label" for="context">Contexte <span style="color:var(--accent)">*</span></label>
+                <textarea
+                  id="context"
+                  class="form-textarea"
+                  placeholder="Décrivez votre demande : votre nom, filière, niveau, motif…"
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" id="generateBtn" class="btn-generate">
+                <span>Générer l'Email</span>
+                <span>✨</span>
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- ── Right: Preview ──────────────────────────── -->
+        <div class="email-preview-panel">
+          <div class="panel-header">
+            <div class="panel-icon amber"></div>
+            <span class="panel-title">Aperçu</span>
+          </div>
+
+          <div class="preview-body">
+
+            <!-- Meta tags row (to / time) -->
+            <div class="preview-meta" id="previewMeta">
+              <div class="meta-tag">
+                À : <span id="previewMetaTo">—</span>
+              </div>
+              <div class="meta-tag" id="previewMetaTime">
+                ⏱ <span>—</span>
+              </div>
+            </div>
+
+            <!-- Subject strip -->
+            <div class="preview-subject" id="previewSubject">
+              <span class="preview-subject-label">Objet</span>
+              <span class="preview-subject-text" id="previewSubjectText">—</span>
+            </div>
+
+            <!-- Loading state -->
+            <div class="preview-loading" id="previewLoading">
+              <div class="spinner" style="width:28px;height:28px;border-width:3px;border-color:rgba(255,255,255,0.15);border-top-color:var(--accent)"></div>
+              <span>Génération en cours…</span>
+            </div>
+
+            <!-- Content -->
+            <div class="preview-content" id="previewContent">
+              <div class="preview-placeholder">
+                <div class="preview-placeholder-icon"></div>
+                <p>L'email généré apparaîtra ici</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Action buttons -->
+          <div class="preview-actions" id="previewActions">
+            <button id="copyBtn" class="btn btn-ghost" style="flex:1">
+               Copier
+            </button>
+            <button id="downloadBtn" class="btn btn-primary" style="flex:1">
+              ⬇ Télécharger .txt
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <p>© 2025–2026 UniHelp — Powered by Groq AI</p>
+  </footer>
+
+  <script src="../static/js/shared.js"></script>
+  <script src="../static/js/email.js"></script>
+</body>
+</html>

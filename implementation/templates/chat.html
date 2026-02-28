@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniHelp – Chat Assistant</title>
+  <link rel="stylesheet" href="../static/css/shared.css">
+  <link rel="stylesheet" href="../static/css/chat.css">
+</head>
+<body>
+
+  <!-- ── Navbar ──────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="/" class="logo">
+        <div class="logo-icon"></div>
+        UniHelp
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"          class="nav-link active">Chat</a></li>
+        <li><a href="/documents" class="nav-link">Documents</a></li>
+        <li><a href="/email"     class="nav-link">Email</a></li>
+        <li><a href="/docs"      class="nav-link" target="_blank">API</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main class="main-content">
+    <div class="chat-wrapper">
+
+      <!-- Status bar -->
+      <div class="chat-status-bar">
+        <div class="chat-title">
+          <div class="chat-title-dot"></div>
+          Assistant RAG
+        </div>
+        <span id="index-status" class="status-badge loading">Vérification…</span>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
+
+        <!-- Empty state -->
+        <div class="empty-state" id="emptyState">
+          <div class="empty-state-icon"></div>
+          <p>Posez une question sur vos documents officiels IIT</p>
+          <div class="suggestion-chips">
+            <button class="chip">Quelles sont les conditions d'inscription ?</button>
+            <button class="chip">Comment obtenir une attestation ?</button>
+            <button class="chip">Dates du calendrier académique ?</button>
+            <button class="chip">Procédure de justification d'absence ?</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Input area -->
+      <div class="chat-input-area">
+        <form id="chatForm" class="chat-form" autocomplete="off">
+          <textarea
+            id="questionInput"
+            placeholder="Posez votre question… (Entrée pour envoyer)"
+            rows="1"
+            disabled
+            aria-label="Question"
+          ></textarea>
+          <button type="submit" id="sendBtn" class="btn-send" disabled aria-label="Envoyer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </form>
+        <p class="input-hint">Shift+Entrée pour une nouvelle ligne</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <p>© 2025–2026 UniHelp — Powered by Groq / xAI</p>
+  </footer>
+
+  <script src="../static/js/shared.js"></script>
+  <script src="../static/js/chat.js"></script>
+</body>
+</html>

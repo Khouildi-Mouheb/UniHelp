@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniHelp – Documents</title>
+  <link rel="stylesheet" href="../static/css/shared.css">
+  <link rel="stylesheet" href="../static/css/documents.css">
+</head>
+<body>
+
+  <!-- ── Navbar ──────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="/" class="logo">
+        <div class="logo-icon"></div>
+        UniHelp
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"          class="nav-link">Chat</a></li>
+        <li><a href="/documents" class="nav-link active">Documents</a></li>
+        <li><a href="/email"     class="nav-link">Email</a></li>
+        <li><a href="/docs"      class="nav-link" target="_blank">API</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main class="main-content">
+    <div class="documents-wrapper">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <h2> Gestion des Documents</h2>
+        <p class="subtitle">Uploadez et indexez vos PDFs officiels IIT</p>
+      </div>
+
+      <!-- Stats row -->
+      <div class="index-status-panel">
+        <div class="stat-card">
+          <div class="stat-icon blue"></div>
+          <div class="stat-info">
+            <div class="stat-value" id="statDocCount">—</div>
+            <div class="stat-label">Documents indexés</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber">⚡</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statIndexStatus">—</div>
+            <div class="stat-label">Statut de l'index</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"></div>
+          <div class="stat-info">
+            <div class="stat-value">FAISS</div>
+            <div class="stat-label">Moteur vectoriel</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload zone -->
+      <div class="card">
+        <div class="card-title">Ajouter des documents</div>
+        <div class="upload-zone" id="uploadArea">
+          <div class="upload-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <div class="upload-title">Glissez vos PDFs ici</div>
+          <div class="upload-subtitle">Format PDF uniquement — taille max 50 Mo par fichier</div>
+          <p class="upload-or">ou</p>
+          <input type="file" id="fileInput" multiple accept=".pdf" style="display:none">
+          <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+            Sélectionner des fichiers
+          </button>
+        </div>
+
+        <!-- Upload progress -->
+        <div class="upload-progress-wrap" id="progressWrap">
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="progress-text">
+            <span id="progressText">Upload en cours…</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="build-section">
+        <div class="build-info">
+          <h3>Indexation des documents</h3>
+          <p>Construisez l'index vectoriel FAISS depuis les PDFs présents dans le dossier <code style="color:var(--accent);font-size:0.85em">docs/</code>. Cette opération peut prendre 1 à 2 minutes.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end">
+          <div class="actions-row">
+            <button id="buildIndexBtn" class="btn btn-accent"> Construire l'index</button>
+            <button id="loadIndexBtn"  class="btn btn-ghost"> Charger l'index</button>
+            <button id="refreshBtn"    class="btn btn-ghost" title="Actualiser">↻</button>
+          </div>
+          <div class="build-progress" id="buildProgress">
+            <div class="spinner"></div>
+            <span>Construction en cours…</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Document list -->
+      <div class="doc-list-wrap">
+        <div class="doc-list-header">
+          <div class="doc-list-title">Documents</div>
+          <div class="doc-count-badge" id="docCountBadge">0 doc</div>
+        </div>
+        <div id="docList">
+          <div class="list-placeholder">
+            <div class="list-placeholder-icon"></div>
+            <p>Chargement…</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <p>© 2025–2026 UniHelp — Powered by Groq AI</p>
+  </footer>
+
+
+  <script src="../static/js/shared.js"></script>
+  <script src="../static/js/documents.js"></script>
+  
+</body>
+</html>

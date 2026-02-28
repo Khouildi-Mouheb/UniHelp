@@ -1,0 +1,297 @@
+/* ============================================================
+   UniHelp – Documents Page Styles
+   ============================================================ */
+
+.documents-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Index status panel ─────────────────────────────────────── */
+.index-status-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.stat-icon.blue   { background: var(--primary-glow); }
+.stat-icon.amber  { background: var(--accent-soft); }
+.stat-icon.green  { background: var(--success-soft); }
+
+.stat-info { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Upload section ─────────────────────────────────────────── */
+.upload-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--bg-card);
+  position: relative;
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+  border-color: var(--primary);
+  background: var(--primary-glow);
+}
+
+.upload-zone.dragover { transform: scale(1.01); }
+
+.upload-icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: var(--bg-hover);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  transition: background var(--transition);
+}
+
+.upload-icon-wrap svg { width: 26px; height: 26px; color: var(--primary); }
+
+.upload-zone:hover .upload-icon-wrap { background: var(--primary-glow); }
+
+.upload-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.upload-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+.upload-or {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0.75rem 0;
+}
+
+/* ── Progress bar ───────────────────────────────────────────── */
+.upload-progress-wrap {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.upload-progress-wrap.visible { display: flex; }
+
+.progress-bar {
+  height: 5px;
+  background: var(--bg-hover);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #5b8dee);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ── Actions row ────────────────────────────────────────────── */
+.actions-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actions-row .btn { height: 38px; }
+
+/* ── Document list ──────────────────────────────────────────── */
+.doc-list-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.doc-list-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.doc-list-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.doc-count-badge {
+  background: var(--primary-glow);
+  color: var(--primary);
+  border: 1px solid rgba(59,91,219,0.3);
+  border-radius: 20px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+
+#docList {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.doc-item:last-child { border-bottom: none; }
+.doc-item:hover { background: var(--bg-hover); }
+
+.doc-file-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(229, 62, 62, 0.1);
+  border: 1px solid rgba(229, 62, 62, 0.2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  color: #fc8181;
+  font-weight: 700;
+}
+
+.doc-details { flex: 1; min-width: 0; }
+
+.doc-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+.doc-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+
+.doc-actions .btn { padding: 0.3rem 0.65rem; font-size: 0.75rem; height: 28px; }
+
+/* ── Empty / Loading states ─────────────────────────────────── */
+.list-placeholder {
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.list-placeholder-icon { font-size: 2rem; opacity: 0.4; }
+
+/* ── Build index section ────────────────────────────────────── */
+.build-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.build-info h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.build-info p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+.build-progress {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.build-progress.visible { display: flex; }
